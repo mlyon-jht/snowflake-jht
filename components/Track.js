@@ -36,7 +36,7 @@ class Track extends React.Component<Props> {
           }
           td {
             line-height: 50px;
-            width: 50px;
+            
             text-align: center;
             background: #eee;
             font-weight: bold;
@@ -55,11 +55,12 @@ class Track extends React.Component<Props> {
             <tbody>
               {milestones.slice().reverse().map((milestone) => {
                 const isMet = milestone <= currentMilestoneId
+                const milestoneName = milestone > 0 ? track.milestones[milestone - 1].name || "None" : "Zero"
                 return (
                   <tr key={milestone}>
                     <td onClick={() => this.props.handleTrackMilestoneChangeFn(this.props.trackId, milestone)}
                         style={{border: `4px solid ${milestone === currentMilestoneId ? '#000' : isMet ? categoryColorScale(track.category) : '#eee'}`, background: isMet ? categoryColorScale(track.category) : undefined}}>
-                      {milestone}
+                      {milestoneName}
                     </td>
                   </tr>
                 )

@@ -1,24 +1,24 @@
-## ⚠️ Heads up: Medium isn’t using this tool anymore, but you’re welcome to!
-[Read more about our current thinking around engineer growth](https://medium.engineering/engineering-growth-at-medium-4935b3234d25).
+# Snowflake-JHT
 
-# Snowflake
-
-Snowflake is Medium's tool for planning and supporting our engineers' career development. You can read more
-about how we use this tool in our [growth framework documentation](https://medium.com/s/engineering-growth-framework).
-Our growth tool is hosted [publicly](https://snowflake.medium.com).
-
-![The Lannisters send their regards](https://i.imgur.com/e9DYLBr.png)
+Snowflake-JHT is Johnson's fork of Medium's tool for planning and supporting our engineers' career development. The tool allows team members to explore the expectations of their current role as well as consider what is involved in other roles.
 
 ## Contributions
 
-You are free to use, change and build on this work to make it useful for your organisation. We will happily consider
-unencumbered code contributions to improve functionality, but as this is the actual tool we use within Medium, acceptance is likely to be intentional, and deliberate. Meaning, slow. As such, you may prefer to fork the codebase for your own needs. We will not accept any contributions that modify the text of the application (but, thank you in advance for pointing out any typos).
+You are encouraged to read through the code, comment, and even suggest improvements. If you wish to contribute code, create a new branch and submit the work for review.
 
 ## Installation
+
+Switch to Node v14 if you're not already on it.
+
+`nvm use v14`
+
+> you may need to install it: `nvm install v14`
 
 Get yarn if you don’t have it already:
 
 `npm install -g yarn`
+
+> If you're not sure, use: `which yarn`
 
 Install dependencies:
 
@@ -37,4 +37,5 @@ This will put a static version of the site in `out/`.
 ## Future work
 
 * Load initial data from a file, to improve flexibility.
+* Save data to a file
 * Add restricted job title selection and validation.

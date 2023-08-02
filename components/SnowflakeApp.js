@@ -27,6 +27,8 @@ const hashToState = (hash: String): ?SnowflakeAppState => {
   trackIds.forEach((trackId, i) => {
     result.milestoneByTrack[trackId] = coerceMilestone(Number(hashValues[i]))
   })
+  // TODO: Adjust the indexes to properly pull the name and title
+  //   once everything else is settled.
   if (hashValues[16]) result.name = decodeURI(hashValues[16])
   if (hashValues[17]) result.title = decodeURI(hashValues[17])
   return result
@@ -45,55 +47,34 @@ const coerceMilestone = (value: number): Milestone => {
   }
 }
 
+// TODO: Update once the things are settled
 const emptyState = (): SnowflakeAppState => {
   return {
     name: '',
     title: '',
     milestoneByTrack: {
-      'MOBILE': 0,
-      'WEB_CLIENT': 0,
-      'FOUNDATIONS': 0,
-      'SERVERS': 0,
-      'PROJECT_MANAGEMENT': 0,
-      'COMMUNICATION': 0,
-      'CRAFT': 0,
-      'INITIATIVE': 0,
-      'CAREER_DEVELOPMENT': 0,
-      'ORG_DESIGN': 0,
-      'WELLBEING': 0,
-      'ACCOMPLISHMENT': 0,
-      'MENTORSHIP': 0,
-      'EVANGELISM': 0,
-      'RECRUITING': 0,
-      'COMMUNITY': 0
+      'TECHNOLOGY': 0,
+      'SYSTEM': 0,
+      'PEER_INFLUENCE': 0,
+      'PROCESS': 0,
+      'COMPANY_INFLUENCE': 0
     },
-    focusedTrackId: 'MOBILE'
+    focusedTrackId: 'TECHNOLOGY'
   }
 }
 
 const defaultState = (): SnowflakeAppState => {
   return {
-    name: 'Cersei Lannister',
-    title: 'Staff Engineer',
+    name: '',
+    title: '',
     milestoneByTrack: {
-      'MOBILE': 1,
-      'WEB_CLIENT': 2,
-      'FOUNDATIONS': 3,
-      'SERVERS': 2,
-      'PROJECT_MANAGEMENT': 4,
-      'COMMUNICATION': 1,
-      'CRAFT': 1,
-      'INITIATIVE': 4,
-      'CAREER_DEVELOPMENT': 3,
-      'ORG_DESIGN': 2,
-      'WELLBEING': 0,
-      'ACCOMPLISHMENT': 4,
-      'MENTORSHIP': 2,
-      'EVANGELISM': 2,
-      'RECRUITING': 3,
-      'COMMUNITY': 0
+      'TECHNOLOGY': 0,
+      'SYSTEM': 0,
+      'PEER_INFLUENCE': 0,
+      'PROCESS': 0,
+      'COMPANY_INFLUENCE': 0
     },
-    focusedTrackId: 'MOBILE'
+    focusedTrackId: 'TECHNOLOGY'
   }
 }
 
@@ -155,10 +136,8 @@ class SnowflakeApp extends React.Component<Props, SnowflakeAppState> {
             text-decoration: none;
           }
         `}</style>
-        <div style={{margin: '19px auto 0', width: 142}}>
-          <a href="https://medium.com/" target="_blank">
-            <Wordmark />
-          </a>
+        <div style={{margin: '19px auto 0', width: 250, textAlign: 'center'}}>
+          <Wordmark />
         </div>
         <div style={{display: 'flex'}}>
           <div style={{flex: 1}}>
@@ -176,7 +155,6 @@ class SnowflakeApp extends React.Component<Props, SnowflakeAppState> {
                   setTitleFn={(title) => this.setTitle(title)} />
             </form>
             <PointSummaries milestoneByTrack={this.state.milestoneByTrack} />
-            <LevelThermometer milestoneByTrack={this.state.milestoneByTrack} />
           </div>
           <div style={{flex: 0}}>
             <NightingaleChart
